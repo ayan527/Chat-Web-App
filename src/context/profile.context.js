@@ -19,11 +19,12 @@ export const ProfileProvider = ({ children }) => {
           const data = snapshot.val();
           // console.log('snapshot', data);
 
-          const { name, createdAt } = data;
+          const { name, createdAt, picture } = data;
 
           const currentUserData = {
             name,
             createdAt,
+            picture,
             uid: currentUser.uid,
             email: currentUser.email,
           };
