@@ -19,7 +19,7 @@ const Sidebar = () => {
       <div ref={topSidebarRef}>
         <DashboardToggle />
         <CreateRoomBtn />
-        <Divider>Join coversation</Divider>
+        <Divider>Join chat rooms</Divider>
       </div>
       <ChatRoomList aboveHeight={height} />
     </div>
