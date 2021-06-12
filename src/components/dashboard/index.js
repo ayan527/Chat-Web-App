@@ -3,6 +3,7 @@ import { Alert, Button, Divider, Drawer, Icon } from 'rsuite';
 import { useProfile } from '../../context/profile.context';
 import { database } from '../../misc/firebase';
 import EditInput from '../EditInput';
+import ProfilePicUploadBtn from './ProfilePicUploadBtn';
 import ProviderBlock from './ProviderBlock';
 
 const Dashboard = ({ onSignOut }) => {
@@ -28,7 +29,7 @@ const Dashboard = ({ onSignOut }) => {
   return (
     <>
       <Drawer.Header>
-        <Drawer.Title>Your Dashboard</Drawer.Title>
+        <Drawer.Title>Manage your Dashboard</Drawer.Title>
       </Drawer.Header>
 
       <Drawer.Body>
@@ -43,6 +44,7 @@ const Dashboard = ({ onSignOut }) => {
           emptyMsg="Nickname can't be empty"
           name="nickname"
         />
+        <ProfilePicUploadBtn />
       </Drawer.Body>
 
       <Drawer.Footer>
