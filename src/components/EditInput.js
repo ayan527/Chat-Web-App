@@ -25,10 +25,9 @@ const EditInput = ({
     const trimmedValue = input.trim();
 
     if (trimmedValue === '') {
+      setInput(initialValue);
       Alert.info(emptyMsg, 4000);
-    }
-
-    if (trimmedValue !== initialValue) {
+    } else if (trimmedValue !== initialValue) {
       await onSave(trimmedValue);
     }
 

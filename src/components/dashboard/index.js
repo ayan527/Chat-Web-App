@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button, Divider, Drawer, Icon } from 'rsuite';
+import { Alert, Button, Divider, Drawer, Icon } from 'rsuite';
 import { useProfile } from '../../context/profile.context';
+import { database } from '../../misc/firebase';
 import EditInput from '../EditInput';
 
 const Dashboard = ({ onSignOut }) => {
@@ -8,7 +9,19 @@ const Dashboard = ({ onSignOut }) => {
   const profileName = profile.name;
 
   const onSave = async newValue => {
-    console.log(newValue);
+    // console.log(newValue);
+
+    const currentUserNameRef = database
+      .ref(`/profiles/${profile.uid}`)
+      .child('name');
+
+    try {
+      await currentUserNameRef.set(newValue);
+
+      Alert.success('Nickname updated successfully', 4000);
+    } catch (err) {
+      Alert.error(err.message, 4000);
+    }
   };
 
   return (
