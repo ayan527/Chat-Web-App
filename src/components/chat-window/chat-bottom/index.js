@@ -15,6 +15,7 @@ function assembleMessage(profile, chatId) {
       ...(profile.picture ? { picture: profile.picture } : {}),
     },
     createdAt: firebase.database.ServerValue.TIMESTAMP,
+    likeCount: 0,
   };
 }
 
