@@ -4,6 +4,7 @@ import { useParams } from 'react-router';
 import ChatBottom from '../../components/chat-window/chat-bottom';
 import ChatMessages from '../../components/chat-window/chat-messages';
 import ChatTop from '../../components/chat-window/chat-top';
+import { CurrentRoomProvider } from '../../context/current-room.context';
 import { useRooms } from '../../context/rooms.context';
 
 const ChatPage = () => {
@@ -33,8 +34,15 @@ const ChatPage = () => {
     );
   }
 
+  const { name, description } = currentRoom;
+
+  const currentRoomData = {
+    name,
+    description,
+  };
+
   return (
-    <>
+    <CurrentRoomProvider data={currentRoomData}>
       <div className="chat-top">
         <ChatTop />
       </div>
@@ -44,7 +52,7 @@ const ChatPage = () => {
       <div className="chat-bottom">
         <ChatBottom />
       </div>
-    </>
+    </CurrentRoomProvider>
   );
 };
 
