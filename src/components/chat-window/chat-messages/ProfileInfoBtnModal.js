@@ -1,4 +1,5 @@
 import React from 'react';
+import moment from 'moment';
 import { Button, Modal } from 'rsuite';
 import { useModalState } from '../../../misc/custom-hooks';
 import ProfilePic from '../../dashboard/ProfilePic';
@@ -9,7 +10,9 @@ const ProfileInfoBtnModal = ({ profile, ...btnProps }) => {
 
   const shortName = profile.name.split(' ')[0];
 
-  const memberSince = new Date(createdAt).toLocaleDateString();
+  const memberSince = moment(new Date(createdAt).toLocaleDateString()).format(
+    'DD/MM/YYYY'
+  );
 
   return (
     <>
