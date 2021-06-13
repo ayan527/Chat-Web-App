@@ -6,6 +6,8 @@ import ChatMessages from '../../components/chat-window/chat-messages';
 import ChatTop from '../../components/chat-window/chat-top';
 import { CurrentRoomProvider } from '../../context/current-room.context';
 import { useRooms } from '../../context/rooms.context';
+import { transformToArr } from '../../misc/helper-funcs';
+import { auth } from '../../misc/firebase';
 
 const ChatPage = () => {
   const { chatId } = useParams();
@@ -15,7 +17,6 @@ const ChatPage = () => {
   if (!rooms) {
     return (
       <Loader
-        oader
         center
         vertical
         backdrop
@@ -36,9 +37,14 @@ const ChatPage = () => {
 
   const { name, description } = currentRoom;
 
+  const admins = transformToArr(currentRoom.admins);
+  const isAdmin = admins.includes(auth.currentUser.uid);
+
   const currentRoomData = {
     name,
     description,
+    admins,
+    isAdmin,
   };
 
   return (

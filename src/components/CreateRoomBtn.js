@@ -12,7 +12,7 @@ import {
   Alert,
 } from 'rsuite';
 import { useModalState } from '../misc/custom-hooks';
-import { database } from '../misc/firebase';
+import { auth, database } from '../misc/firebase';
 
 const { StringType } = Schema.Types;
 
@@ -48,6 +48,9 @@ const CreateRoomBtn = () => {
     const newRoomData = {
       ...form,
       createdAt: firebase.database.ServerValue.TIMESTAMP,
+      admins: {
+        [auth.currentUser.uid]: true,
+      },
     };
 
     const chatRoomRef = database.ref('/rooms');
