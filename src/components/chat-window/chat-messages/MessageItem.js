@@ -9,7 +9,7 @@ import ProfileInfoBtnModal from './ProfileInfoBtnModal';
 import IconBtnControl from './IconBtnControl';
 import { useHover, useMediaQuery } from '../../../misc/custom-hooks';
 
-const MessageItem = ({ message, handleAdmin, handleLike }) => {
+const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
   const { author, createdAt, text, likes, likeCount } = message;
 
   const isAdmin = useCurrentRoom(room => room.isAdmin);
@@ -61,6 +61,14 @@ const MessageItem = ({ message, handleAdmin, handleLike }) => {
           onClick={() => handleLike(message.id)}
           badgeContent={likeCount}
         />
+        {isAuthor && (
+          <IconBtnControl
+            isVisible={canShowIcons}
+            iconName="close"
+            tooltip="Delete"
+            onClick={() => handleDelete(message.id)}
+          />
+        )}
       </div>
       <div>{text && <span className="word-breal-all">{text}</span>}</div>
     </li>
