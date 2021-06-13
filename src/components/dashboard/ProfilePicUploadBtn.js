@@ -5,6 +5,7 @@ import { useModalState } from '../../misc/custom-hooks';
 import { database, storage } from '../../misc/firebase';
 import { useProfile } from '../../context/profile.context';
 import ProfilePic from './ProfilePic';
+import { getUserUpdates } from '../../misc/helper-funcs';
 
 const picFileTypes = '.png, .jpg, .jpeg';
 
@@ -67,10 +68,14 @@ const ProfilePicUploadBtn = () => {
 
       const uploadedUrl = await uploadResult.ref.getDownloadURL();
 
-      const currentUserRef = database
-        .ref(`/profiles/${profile.uid}`)
-        .child('picture');
-      await currentUserRef.set(uploadedUrl);
+      const updates = await getUserUpdates(
+        profile.uid,
+        'picture',
+        uploadedUrl,
+        database
+      );
+
+      await database.ref().update(updates);
 
       setIsLoading(false);
       closeModal();
