@@ -44,7 +44,11 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
           className="p-0 ml-1 text-black"
         >
           {canGrantAdmin && (
-            <Button block onClick={() => handleAdmin(author.uid)} color="blue">
+            <Button
+              block
+              onClick={() => handleAdmin(author.uid)}
+              color={isMsgAuthorAdmin ? 'red' : 'green'}
+            >
               {isMsgAuthorAdmin ? 'Remove from admin' : 'Make new admin'}
             </Button>
           )}
