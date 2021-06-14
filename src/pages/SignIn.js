@@ -25,11 +25,19 @@ const SignIn = () => {
   };
 
   const onFacebookSignIn = () => {
-    signInWithProvider(new firebase.auth.FacebookAuthProvider());
+    signInWithProvider(
+      new firebase.auth.FacebookAuthProvider().setCustomParameters({
+        auth_type: 'reauthenticate',
+      })
+    );
   };
 
   const onGoogleSignIn = () => {
-    signInWithProvider(new firebase.auth.GoogleAuthProvider());
+    signInWithProvider(
+      new firebase.auth.GoogleAuthProvider().setCustomParameters({
+        prompt: 'select_account',
+      })
+    );
   };
 
   return (
