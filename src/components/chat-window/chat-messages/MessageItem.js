@@ -8,9 +8,22 @@ import PresenceDot from '../../PresenceDot';
 import ProfileInfoBtnModal from './ProfileInfoBtnModal';
 import IconBtnControl from './IconBtnControl';
 import { useHover, useMediaQuery } from '../../../misc/custom-hooks';
+import ImgFileBtnModal from './ImgFileBtnModal';
+
+const displayFileMessage = file => {
+  if (file.contentType.includes('image')) {
+    return (
+      <div className="height-220">
+        <ImgFileBtnModal src={file.url} fileName={file.name} />
+      </div>
+    );
+  }
+
+  return <a href={file.url}>Download {file.name}</a>;
+};
 
 const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
-  const { author, createdAt, text, likes, likeCount } = message;
+  const { author, createdAt, text, likes, likeCount, file } = message;
 
   const isAdmin = useCurrentRoom(room => room.isAdmin);
   const admins = useCurrentRoom(room => room.admins);
@@ -74,7 +87,10 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
           />
         )}
       </div>
-      <div>{text && <span className="word-breal-all">{text}</span>}</div>
+      <div>
+        {text && <span className="word-breal-all">{text}</span>}
+        {file && displayFileMessage(file)}
+      </div>
     </li>
   );
 };
