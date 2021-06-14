@@ -19,6 +19,16 @@ const displayFileMessage = file => {
     );
   }
 
+  if (file.contentType.includes('audio')) {
+    return (
+      // eslint-disable-next-line jsx-a11y/media-has-caption
+      <audio controls>
+        <source src={file.url} type="audio/mp3" />
+        Audio not supported
+      </audio>
+    );
+  }
+
   return <a href={file.url}>Download {file.name}</a>;
 };
 

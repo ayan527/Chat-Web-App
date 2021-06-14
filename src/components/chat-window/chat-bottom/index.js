@@ -5,6 +5,7 @@ import { useParams } from 'react-router';
 import { useProfile } from '../../../context/profile.context';
 import { database } from '../../../misc/firebase';
 import FileUploaderBtn from './FileUploaderBtn';
+import AudioUploadBtn from './AudioUploadBtn';
 
 function assembleMessage(profile, chatId) {
   return {
@@ -105,6 +106,7 @@ const ChatBottom = () => {
     <div>
       <InputGroup>
         <FileUploaderBtn afterUpload={afterUpload} />
+        <AudioUploadBtn afterUpload={afterUpload} />
         <Input
           placeholder="Write a new message here..."
           value={inputText}
