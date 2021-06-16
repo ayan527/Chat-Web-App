@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Button } from 'rsuite';
 import TimeAgo from 'timeago-react';
 import { useCurrentRoom } from '../../../context/current-room.context';
@@ -105,4 +105,4 @@ const MessageItem = ({ message, handleAdmin, handleLike, handleDelete }) => {
   );
 };
 
-export default MessageItem;
+export default memo(MessageItem);

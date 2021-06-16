@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { useParams } from 'react-router';
 import { Alert, Button, Drawer } from 'rsuite';
 import { useCurrentRoom } from '../../../context/current-room.context';
@@ -77,4 +77,4 @@ const EditRoomInfoBtnDrawer = () => {
   );
 };
 
-export default EditRoomInfoBtnDrawer;
+export default memo(EditRoomInfoBtnDrawer);
