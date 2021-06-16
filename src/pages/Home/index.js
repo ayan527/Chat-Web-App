@@ -14,7 +14,7 @@ const Home = () => {
 
   return (
     <ChatRoomsProvider>
-      <Grid fluid className="h-100">
+      <Grid fluid className="h-100 overflow-hidden">
         <Row className="h-100">
           {isRenderingSideBar && (
             <Col xs={24} md={8} className="h-100">

@@ -47,8 +47,8 @@ const SignIn = () => {
           <Col xs={24} md={12} mdOffset={6}>
             <Panel>
               <div className="text-center">
-                <h2>Welcom to Chatify</h2>
-                <p>Hello there!</p>
+                <h2>Welcome to ChatBase</h2>
+                <p>Would you like a world with magic in it? Join us!</p>
               </div>
 
               <div className="mt-3">
