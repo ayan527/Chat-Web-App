@@ -18,6 +18,25 @@ body,
 #root,
 #root > div {
   height: 100%;
+  min-height: 100%;
+}
+
+.signin-page {
+  background: linear-gradient(-45deg, #343f56, #1c1427, #511281, #aa2ee6);
+  background-size: 400% 400%;
+  animation: gradient 15s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
 }
 
 .custom-scroll {
@@ -97,5 +116,74 @@ $chat-b: 65px;
     100% {
       opacity: 1;
     }
+  }
+}
+
+.bottom-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  padding: 20px;
+  margin-top: auto;
+  min-height: 50px;
+}
+
+.copyright-para {
+  font-size: 0.75rem;
+  padding: 10px 0 0;
+  color: #eaf6f6;
+}
+
+.base-animation {
+  animation: glowgreen 2s ease-in-out infinite alternate;
+}
+
+@keyframes glowgreen {
+  from {
+    text-shadow: 0 0 20px #4caf50;
+  }
+  to {
+    text-shadow: 0 0 30px #5cb860, 0 0 10px #4caf50;
+  }
+}
+
+.chat-animation {
+  animation: gloworange 2s ease-in-out infinite alternate;
+}
+
+@keyframes gloworange {
+  from {
+    text-shadow: 0 0 20px #ffc72a;
+  }
+  to {
+    text-shadow: 0 0 30px #ffce44, 0 0 10px #ffc72a;
+  }
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.typing-demo {
+  width: 49ch;
+  animation: typing 4s steps(49), blink 0.5s step-end infinite alternate;
+  white-space: nowrap;
+  overflow: hidden;
+  border-right: 3px solid;
+  font-family: monospace;
+}
+
+@keyframes typing {
+  from {
+    width: 0;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
   }
 }

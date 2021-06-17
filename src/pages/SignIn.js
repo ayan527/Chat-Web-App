@@ -41,14 +41,22 @@ const SignIn = () => {
   };
 
   return (
-    <Container>
+    <Container className="signin-page">
       <Grid className="mt-page">
         <Row>
           <Col xs={24} md={12} mdOffset={6}>
             <Panel>
-              <div className="text-center">
-                <h2>Welcome to ChatBase</h2>
-                <p>Would you like a world with magic in it? Join us!</p>
+              <div className="text-center text-signin">
+                <h2>
+                  Welcome to{' '}
+                  <span className="text-orange chat-animation">Chat</span>
+                  <span className="text-green base-animation">Base</span>
+                </h2>
+                <div className="wrapper">
+                  <p className="mt-1 typing-demo">
+                    Would you like a world with magic in it? Join us!
+                  </p>
+                </div>
               </div>
 
               <div className="mt-3">
@@ -63,6 +71,9 @@ const SignIn = () => {
           </Col>
         </Row>
       </Grid>
+      <footer className="bottom-container">
+        <p className="copyright-para">© 2021 Ayan Mukherjee.</p>
+      </footer>
     </Container>
   );
 };
